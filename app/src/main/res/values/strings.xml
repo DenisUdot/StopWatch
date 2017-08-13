@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Stopwatch</string>
+    <string name="start">START</string>
+    <string name="stop">STOP</string>
+    <string name="reset">RESET</string>
+    <string name="setup">SETUP</string>
+    <string name="ok">OK</string>
+    <string name="zero">0:00:00.00</string>
+    <string name="round_duration">ROUND DURATION</string>
+    <string name="number_of_rounds">NUMBER OF ROUNDS</string>
+    <string name="rest_duration">REST DURATION</string>
+    <string name="hour_min_sec">HOURS:MINUTES:SECONDS</string>
+
+
+</resources>
