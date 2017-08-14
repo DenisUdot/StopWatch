@@ -5,54 +5,29 @@ import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Handler;
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.widget.TextView;
 
 
 import java.util.concurrent.TimeUnit;
 
-public class Stopwatch implements Parcelable {
-    long hours,minutes,seconds,now,milliseconds,calcTime,mill,timeStop;
-    int numberOfRound=1;
-    long restTime=0;
-    long roundTime=360000000;
-    long setTime;
-    boolean running,restOrRound,wasRunning;
-    TextView timeView;
-    private int mData;
+public class Stopwatch {
+    private long hours,minutes,seconds,now,milliseconds,calcTime,mill,timeStop;
+    private int numberOfRound=1;
+    private long restTime=0;
+    private long roundTime=360000000;
+    private long setTime;
+    private boolean running,restOrRound,wasRunning;
+    private TextView timeView;
 
-    public Stopwatch(TextView timeView){
+    //two constructors
+    Stopwatch(){}
+    Stopwatch(TextView timeView){
         this.timeView=timeView;
     }
 
-
-    // example constructor that takes a Parcel and gives you an object populated with it's values
-    private Stopwatch(Parcel in) {
-        mData = in.readInt();
+    public void setTimeView(TextView timeView){
+        this.timeView=timeView;
     }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeInt(mData);
-    }
-    public static final Parcelable.Creator<Stopwatch> CREATOR = new Parcelable.Creator<Stopwatch>() {
-        public Stopwatch createFromParcel(Parcel in) {
-            return new Stopwatch(in);
-        }
-
-        public Stopwatch[] newArray(int size) {
-            return new Stopwatch[size];
-        }
-    };
-
-
-
 
     public void start(){
         setTime=roundTime;
@@ -97,7 +72,7 @@ public class Stopwatch implements Parcelable {
                         }
                     }
                 }
-                handler.postDelayed(this, 75);
+                handler.postDelayed(this, 70);
             }
         });
     }
@@ -110,18 +85,36 @@ public class Stopwatch implements Parcelable {
         running=false;
         wasRunning=running;
         calcTime=0;
+        numberOfRound=1;
+        restTime=0;
+        roundTime=960000000;
     }
     public void setRoundTime(long roundTime){
         this.roundTime=roundTime;
-        reset();
+        running=false;
+        wasRunning=running;
+        calcTime=0;
     }
     public void setRestTime(long restTime){
         this.restTime=restTime;
-        reset();
+        running=false;
+        wasRunning=running;
+        calcTime=0;
     }
     public void setNumberOfRound(int numberOfRound){
         this.numberOfRound=numberOfRound;
-        reset();
+        running=false;
+        wasRunning=running;
+        calcTime=0;
+    }
+    public long getRoundTime(){
+        return roundTime;
+    }
+    public long getRestTime(){
+        return restTime;
+    }
+    public int getNumberOfRound(){
+        return numberOfRound;
     }
 //    public void playAlarm(){
 //        Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);

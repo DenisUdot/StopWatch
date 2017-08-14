@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 package="com.denisudotgmail.stopwatch">
 
-<application android:allowBackup="true" android:icon="@mipmap/ic_launcher" android:label="@string/app_name"
+<application android:name=".MySingleton" android:allowBackup="true" android:icon="@mipmap/ic_launcher" android:label="@string/app_name"
     android:roundIcon="@mipmap/ic_launcher_round"  android:theme="@style/AppTheme"
     android:windowSoftInputMode="stateHidden|adjustResize">
     <activity android:name=".StopwatchActivity">

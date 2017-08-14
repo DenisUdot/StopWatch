@@ -9,7 +9,8 @@
     <string name="round_duration">ROUND DURATION</string>
     <string name="number_of_rounds">NUMBER OF ROUNDS</string>
     <string name="rest_duration">REST DURATION</string>
-    <string name="hour_min_sec">HOURS:MINUTES:SECONDS</string>
+    <string name="hour_min_sec">HOURS : MINUTES : SECONDS</string>
+
 
 
 </resources>

@@ -1,15 +1,13 @@
 package com.denisudotgmail.stopwatch;
 
-
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.NumberPicker;
 
+
 public class SetUpActivity extends AppCompatActivity {
-    Stopwatch timer;
-    Intent intent;
+    private Stopwatch timer;
     private NumberPicker roundDurationHours,roundDurationSeconds,roundDurationMinutes,restDurationHours,restDurationMinutes,restDurationSeconds,
     roundNumber;
     @Override
@@ -45,11 +43,10 @@ public class SetUpActivity extends AppCompatActivity {
         roundNumber.setMaxValue(30);
         roundNumber.setWrapSelectorWheel(true);
     }
-
+    // onClickOk set RuondTime, RestTime and NumberOfRound to Stopwatch
     public void onClickOk(View view){
-
-        intent=getIntent();
-        timer=(Stopwatch)intent.getExtras().getParcelable(StopwatchActivity.STOPWATCH);
+        MySingleton mySingleton=(MySingleton)getApplicationContext();
+        timer=(Stopwatch)mySingleton.getStopwatch();
         timer.setRoundTime((long)(roundDurationHours.getValue()*60*60*1000)+(roundDurationMinutes.getValue()*60*1000)+(roundDurationSeconds.getValue()*1000));
         timer.setRestTime((long)(restDurationHours.getValue()*60*60*1000)+(restDurationMinutes.getValue()*60*1000)+(restDurationSeconds.getValue()*1000));
         timer.setNumberOfRound(roundNumber.getValue());
