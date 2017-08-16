@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class StopwatchActivity extends Activity {
     private Stopwatch timer;
-    private TextView timeView;
+    private TextView timeView,numberOfRound,roundDuration,restDuration;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +21,12 @@ public class StopwatchActivity extends Activity {
         timer=(Stopwatch)mySingleton.getStopwatch();
         timeView=(TextView)findViewById(R.id.my_chronometer);
         timer.setTimeView(timeView);
+        numberOfRound=(TextView)findViewById(R.id.numberOfRoundShowView);
+        roundDuration=(TextView)findViewById(R.id.roundTimeShowView);
+        restDuration=(TextView)findViewById(R.id.restTimeShowView);
+//        numberOfRound.setText(timer.getNumberOfRound());
+//        roundDuration.setText(timer.getRoundTime());
+//        restDuration.setText(timer.getRestTime());
     }
 
     public void onClickStart(View view){
@@ -37,18 +43,12 @@ public class StopwatchActivity extends Activity {
         Intent intent=new Intent(this, SetUpActivity.class);
         startActivity(intent);
     }
-
     @Override
-    protected void onStop(){
-        super.onStop();
-
+    protected void onResume(){
+        super.onResume();
+           numberOfRound.setText(String.valueOf(timer.getNumberOfRound()));
+           roundDuration.setText(timer.getRoundTime());
+           restDuration.setText(timer.getRestTime());
     }
-    @Override
-    protected void onStart(){
-        super.onStart();
-//        TextView numberOfRound=(TextView)findViewById(R.id.numberOfRoundView);
-//        numberOfRound.setText(timer.getNumberOfRound());
-    }
-
 }
 

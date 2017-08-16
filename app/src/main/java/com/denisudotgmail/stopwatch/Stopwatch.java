@@ -14,7 +14,7 @@ public class Stopwatch {
     private long hours,minutes,seconds,now,milliseconds,calcTime,mill,timeStop;
     private int numberOfRound=1;
     private long restTime=0;
-    private long roundTime=360000000;
+    private long roundTime=960000000;
     private long setTime;
     private boolean running,restOrRound,wasRunning;
     private TextView timeView;
@@ -107,11 +107,23 @@ public class Stopwatch {
         wasRunning=running;
         calcTime=0;
     }
-    public long getRoundTime(){
-        return roundTime;
+    public String getRoundTime(){
+        if(convert(roundTime)==null){
+            return "mistake";
+        }
+        else{
+
+            return convert(roundTime);
+        }
     }
-    public long getRestTime(){
-        return restTime;
+    public String getRestTime(){
+        if(convert(restTime)==null){
+            return "mistake";
+        }
+        else{
+
+            return convert(restTime);
+        }
     }
     public int getNumberOfRound(){
         return numberOfRound;
@@ -121,4 +133,11 @@ public class Stopwatch {
 //        Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
 //        r.play();
 //    }
+    private String convert(long number){
+        long hoursConvert = TimeUnit.MILLISECONDS.toHours(number) % 24;
+        long minutesConvert = TimeUnit.MILLISECONDS.toMinutes(number) % 60;
+        long secondsConvert = TimeUnit.MILLISECONDS.toSeconds(number) % 60;
+        String timeConvert = String.format("%d:%02d:%02d", hoursConvert, minutesConvert, secondsConvert);
+        return timeConvert;
+    }
 }
