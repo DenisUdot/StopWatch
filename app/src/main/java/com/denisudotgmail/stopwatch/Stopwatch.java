@@ -1,9 +1,12 @@
 package com.denisudotgmail.stopwatch;
 
 
+import android.content.Context;
+import android.media.MediaPlayer;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Handler;
 import android.widget.TextView;
 
@@ -11,22 +14,26 @@ import android.widget.TextView;
 import java.util.concurrent.TimeUnit;
 
 public class Stopwatch {
+    private MediaPlayer mp;
     private long hours,minutes,seconds,now,milliseconds,calcTime,mill,timeStop;
     private int numberOfRound=1;
     private long restTime=0;
-    private long roundTime=960000000;
+    private long roundTime=86400000;
     private long setTime;
     private boolean running,restOrRound,wasRunning;
     private TextView timeView;
 
-    //two constructors
-    Stopwatch(){}
-    Stopwatch(TextView timeView){
+    public Stopwatch (TextView timeView,Context context){
         this.timeView=timeView;
+        mp = MediaPlayer.create(context, R.raw.beep);
+    }
+    public Stopwatch(){
+
     }
 
-    public void setTimeView(TextView timeView){
+    public void setUp(TextView timeView,Context context){
         this.timeView=timeView;
+        mp = MediaPlayer.create(context, R.raw.beep);
     }
 
     public void start(){
@@ -60,7 +67,7 @@ public class Stopwatch {
                             restOrRound = true;
                             setTime = restTime;
                             numberOfRound--;
-//                            playAlarm();
+                            mp.start();
                             if (numberOfRound <= 0){
                                 running=false;
                             }
@@ -68,7 +75,7 @@ public class Stopwatch {
                             mill =System.currentTimeMillis();
                             restOrRound = false;
                             setTime = roundTime;
-//                            playAlarm();
+                            mp.start();
                         }
                     }
                 }
@@ -87,7 +94,7 @@ public class Stopwatch {
         calcTime=0;
         numberOfRound=1;
         restTime=0;
-        roundTime=960000000;
+        roundTime=86400000;
     }
     public void setRoundTime(long roundTime){
         this.roundTime=roundTime;
@@ -128,11 +135,7 @@ public class Stopwatch {
     public int getNumberOfRound(){
         return numberOfRound;
     }
-//    public void playAlarm(){
-//        Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-//        Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
-//        r.play();
-//    }
+
     private String convert(long number){
         long hoursConvert = TimeUnit.MILLISECONDS.toHours(number) % 24;
         long minutesConvert = TimeUnit.MILLISECONDS.toMinutes(number) % 60;

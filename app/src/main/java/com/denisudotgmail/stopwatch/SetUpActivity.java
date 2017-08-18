@@ -16,7 +16,7 @@ public class SetUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_set_up);
         roundDurationHours=(NumberPicker)findViewById(R.id.roundDurationHours);
         roundDurationHours.setMinValue(0);
-        roundDurationHours.setMaxValue(59);
+        roundDurationHours.setMaxValue(24);
         roundDurationHours.setWrapSelectorWheel(true);
         roundDurationMinutes=(NumberPicker)findViewById(R.id.roundDurationMinutes);
         roundDurationMinutes.setMinValue(0);
@@ -27,7 +27,7 @@ public class SetUpActivity extends AppCompatActivity {
         roundDurationSeconds.setMaxValue(59);
         roundDurationSeconds.setWrapSelectorWheel(true);
         restDurationHours=(NumberPicker)findViewById(R.id.restDurationHours);
-        restDurationHours.setMaxValue(30);
+        restDurationHours.setMaxValue(24);
         restDurationHours.setMinValue(0);
         restDurationHours.setWrapSelectorWheel(true);
         restDurationMinutes=(NumberPicker)findViewById(R.id.restDurationMinutes);

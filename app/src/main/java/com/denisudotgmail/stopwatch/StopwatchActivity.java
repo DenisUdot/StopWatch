@@ -18,15 +18,11 @@ public class StopwatchActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stopwatch);
         MySingleton mySingleton=(MySingleton)getApplicationContext();
-        timer=(Stopwatch)mySingleton.getStopwatch();
         timeView=(TextView)findViewById(R.id.my_chronometer);
-        timer.setTimeView(timeView);
+        timer=(Stopwatch)mySingleton.getStopwatch(timeView,this);
         numberOfRound=(TextView)findViewById(R.id.numberOfRoundShowView);
         roundDuration=(TextView)findViewById(R.id.roundTimeShowView);
         restDuration=(TextView)findViewById(R.id.restTimeShowView);
-//        numberOfRound.setText(timer.getNumberOfRound());
-//        roundDuration.setText(timer.getRoundTime());
-//        restDuration.setText(timer.getRestTime());
     }
 
     public void onClickStart(View view){
