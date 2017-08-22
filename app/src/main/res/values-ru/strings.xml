@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Фитнес таймер</string>
+    <string name="start">СТАРТ</string>
+    <string name="stop">СТОП</string>
+    <string name="reset">СБРОС</string>
+    <string name="setup">НАСТРОЙКИ</string>
+    <string name="ok">ОК</string>
+    <string name="zero">0:00:00.00</string>
+    <string name="round_duration">ВРЕМЯ РАУНДА</string>
+    <string name="number_of_rounds">КОЛ-ВО РАУНДОВ</string>
+    <string name="rest_duration">ВРЕМЯ ОТДЫХА</string>
+    <string name="hour_min_sec">ЧАСЫ : МИНУТЫ : СЕКУНДЫ</string>
+
+
+
+</resources>

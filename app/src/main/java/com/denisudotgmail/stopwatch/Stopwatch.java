@@ -15,8 +15,8 @@ import java.util.concurrent.TimeUnit;
 
 public class Stopwatch {
     private MediaPlayer mp;
-    private long hours,minutes,seconds,now,milliseconds,calcTime,mill,timeStop;
-    private int numberOfRound=1;
+    private long hours,savedRoundTime ,minutes, savedRestTime, seconds, now, milliseconds, calcTime, mill, timeStop;
+    private int savedNumberOfRound, numberOfRound=1;
     private long restTime=0;
     private long roundTime=86400000;
     private long setTime;
@@ -92,48 +92,51 @@ public class Stopwatch {
         running=false;
         wasRunning=running;
         calcTime=0;
-        numberOfRound=1;
-        restTime=0;
-        roundTime=86400000;
+        numberOfRound=savedNumberOfRound;
+        restTime=savedRestTime;
+        roundTime=savedRoundTime;
     }
     public void setRoundTime(long roundTime){
-        this.roundTime=roundTime;
+        savedRoundTime=roundTime;
+        this.roundTime=savedRoundTime;
         running=false;
         wasRunning=running;
         calcTime=0;
     }
     public void setRestTime(long restTime){
-        this.restTime=restTime;
+        savedRestTime=restTime;
+        this.restTime=savedRestTime;
         running=false;
         wasRunning=running;
         calcTime=0;
     }
     public void setNumberOfRound(int numberOfRound){
-        this.numberOfRound=numberOfRound;
+        savedNumberOfRound=numberOfRound;
+        this.numberOfRound=savedNumberOfRound;
         running=false;
         wasRunning=running;
         calcTime=0;
     }
     public String getRoundTime(){
-        if(convert(roundTime)==null){
+        if(convert(savedRoundTime)==null){
             return "mistake";
         }
         else{
 
-            return convert(roundTime);
+            return convert(savedRoundTime);
         }
     }
     public String getRestTime(){
-        if(convert(restTime)==null){
+        if(convert(savedRestTime)==null){
             return "mistake";
         }
         else{
 
-            return convert(restTime);
+            return convert(savedRestTime);
         }
     }
     public int getNumberOfRound(){
-        return numberOfRound;
+        return savedNumberOfRound;
     }
 
     private String convert(long number){

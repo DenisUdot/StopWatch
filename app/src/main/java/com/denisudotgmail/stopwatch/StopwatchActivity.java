@@ -6,10 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-
-
-
-
 public class StopwatchActivity extends Activity {
     private Stopwatch timer;
     private TextView timeView,numberOfRound,roundDuration,restDuration;
@@ -46,5 +42,5 @@ public class StopwatchActivity extends Activity {
            roundDuration.setText(timer.getRoundTime());
            restDuration.setText(timer.getRestTime());
     }
-}
+ }
 
