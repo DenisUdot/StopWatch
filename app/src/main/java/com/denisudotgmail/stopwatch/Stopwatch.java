@@ -69,7 +69,10 @@ public class Stopwatch {
                             numberOfRound--;
                             mp.start();
                             if (numberOfRound <= 0){
+                              //  reset();
                                 running=false;
+                                wasRunning=running;
+                                numberOfRound=savedNumberOfRound;
                             }
                         } else if (restOrRound == true) {
                             mill =System.currentTimeMillis();

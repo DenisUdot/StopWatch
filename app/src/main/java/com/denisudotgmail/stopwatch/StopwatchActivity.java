@@ -8,12 +8,13 @@ import android.widget.TextView;
 
 public class StopwatchActivity extends Activity {
     private Stopwatch timer;
+    private MySingleton mySingleton;
     private TextView timeView,numberOfRound,roundDuration,restDuration;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stopwatch);
-        MySingleton mySingleton=(MySingleton)getApplicationContext();
+        mySingleton = (MySingleton)getApplicationContext();
         timeView=(TextView)findViewById(R.id.my_chronometer);
         timer=(Stopwatch)mySingleton.getStopwatch(timeView,this);
         numberOfRound=(TextView)findViewById(R.id.numberOfRoundShowView);
@@ -30,7 +31,6 @@ public class StopwatchActivity extends Activity {
     public void onClickReset(View view){
         timer.reset();
     }
-
     public void onClickSetUp(View view){
         Intent intent=new Intent(this, SetUpActivity.class);
         startActivity(intent);
