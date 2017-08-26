@@ -3,10 +3,6 @@ package com.denisudotgmail.stopwatch;
 
 import android.content.Context;
 import android.media.MediaPlayer;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
-import android.net.Uri;
-import android.os.Bundle;
 import android.os.Handler;
 import android.widget.TextView;
 
@@ -34,6 +30,7 @@ public class Stopwatch {
     public void setUp(TextView timeView,Context context){
         this.timeView=timeView;
         mp = MediaPlayer.create(context, R.raw.beep);
+
     }
 
     public void start(){
@@ -57,7 +54,11 @@ public class Stopwatch {
                 // milliseconds show time in hundred
                 milliseconds = (calcTime/10) % 100;
                 String time = String.format("%d:%02d:%02d.%02d", hours, minutes, seconds,milliseconds);
-                timeView.setText(time);
+                try{
+                    timeView.setText(time);
+                }catch (Exception ex){
+                    ex.printStackTrace();
+                }
                 if (running) {
                     now = System.currentTimeMillis();
                     calcTime = now - mill;
